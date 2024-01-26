@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hastalık Teşhisi</title>
+</head>
+<body>
+    <h1>Hastalık Teşhisi</h1>
+    <form method="post">
+        {{ symptom }} belirtisine sahip misiniz?
+        <input type="radio" name="response" value="Evet" required>Evet
+        <input type="radio" name="response" value="Hayır" required>Hayır
+        <input type="hidden" name="symptom" value="{{ symptom }}">
+        <button type="submit">Devam Et</button>
+    </form>
+</body>
+</html>
