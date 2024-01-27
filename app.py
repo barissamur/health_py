@@ -95,7 +95,12 @@ def index():
 
         session["current_symptom"] = symptoms.pop(0)
         session["symptoms"] = symptoms
-        return render_template("index.html", symptom=session["current_symptom"])
+        # Puan güncellemesi ve şablona aktarılması
+        return render_template(
+            "index.html",
+            symptom=translate_symptom(session["current_symptom"]),
+            total_score=session["total_score"],
+        )
 
     # İlk belirtiyi seçme ve oturumu başlatma
     random_symptom = random.choice(list(X_train.columns))
@@ -107,7 +112,12 @@ def index():
     session["asked_symptoms"] = list(asked_symptoms)
     session["current_symptom"] = symptoms.pop(0)
     session["symptoms"] = symptoms
-    return render_template("index.html", symptom=session["current_symptom"])
+
+    return render_template(
+        "index.html",
+        symptom=translate_symptom(session["current_symptom"]),
+        total_score=session.get("total_score", 0),
+    )
 
 
 @app.route("/predict")
@@ -123,4 +133,4 @@ def predict():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=5000)

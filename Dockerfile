@@ -1,15 +1,18 @@
-# Temel alınacak imaj
+# Python resmi imajını kullan
 FROM python:3.10
 
-# Çalışma dizini ayarı
+# Çalışma dizinini ayarla
 WORKDIR /app
 
-# Gerekli Python paketlerini yükleyin
-COPY requirements.txt /app/
+# Gerekli Python paketlerini yükle
+COPY requirements.txt .
 RUN pip install -r requirements.txt
 
-# Uygulama dosyalarını kopyalayın
-COPY . /app
+# Uygulama dosyalarını kopyala
+COPY . .
 
-# Uygulamayı çalıştırın
-CMD ["python", "1_production.py"]
+# Uygulamanın çalışacağı portu belirt
+EXPOSE 5000
+
+# Uygulamayı başlat
+CMD ["python", "app.py"]

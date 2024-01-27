@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Hastalık Teşhisi</title>
+    <title>Hastalık Tahmini Uygulaması</title>
 </head>
 <body>
-    <h1>Hastalık Teşhisi</h1>
+    <h2>{{ symptom }} belirtisine sahip misiniz?</h2>
+    <p>Şu anki puanınız: {{ total_score }}</p>
     <form method="post">
-        {{ symptom }} belirtisine sahip misiniz?
-        <input type="radio" name="response" value="Evet" required>Evet
-        <input type="radio" name="response" value="Hayır" required>Hayır
-        <input type="hidden" name="symptom" value="{{ symptom }}">
-        <button type="submit">Devam Et</button>
+        <button type="submit" name="response" value="Evet">Evet</button>
+        <button type="submit" name="response" value="Hayır">Hayır</button>
     </form>
 </body>
 </html>
